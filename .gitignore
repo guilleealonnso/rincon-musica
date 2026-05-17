@@ -1,0 +1,24 @@
+#Para seguridad, que no se suba lo que quiero a git, con ayuda de IA me ha dicho lo que tengo que meter aquí
+#Principalmente para ClientID y ClientSecret de Spotify API
+
+
+# Backend
+backend/rincon-musica-api/target/
+backend/rincon-musica-api/.classpath
+backend/rincon-musica-api/.project
+backend/rincon-musica-api/.settings/
+backend/rincon-musica-api/src/main/resources/application-local.properties
+
+# Frontend
+frontend/**/node_modules/
+frontend/**/dist/
+frontend/**/.env
+frontend/**/.env.local
+
+# IDEs
+.idea/
+.vscode/
+
+# Sistema
+.DS_Store
+Thumbs.db
