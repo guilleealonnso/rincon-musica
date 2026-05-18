@@ -33,7 +33,7 @@ public class CancionDaoJPA implements CancionDAO {
     public List<Cancion> obtenerPopulares() {
         return entityManager
                 .createQuery("FROM Cancion c ORDER BY c.popularidad DESC", Cancion.class)
-                .setMaxResults(10)
+                .setMaxResults(12)
                 .getResultList();
     }
 

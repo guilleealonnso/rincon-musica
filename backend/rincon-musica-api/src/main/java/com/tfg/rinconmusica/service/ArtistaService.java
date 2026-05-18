@@ -27,4 +27,7 @@ public class ArtistaService {
     public List<Artista> buscarPorNombre(String nombre) {
         return artistaDAO.buscarPorNombre(nombre);
     }
+    public Artista actualizar(Artista artista) {
+        return artistaDAO.actualizar(artista);
+    }
 }

@@ -15,7 +15,9 @@ public class AlbumService {
     public AlbumService(AlbumDAO albumDAO) {
         this.albumDAO = albumDAO;
     }
-
+    public Album actualizar(Album album) {
+        return albumDAO.actualizar(album);
+    }
     public List<Album> obtenerTodos() {
         return albumDAO.obtenerTodos();
     }

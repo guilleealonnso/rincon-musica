@@ -9,6 +9,7 @@ import com.tfg.rinconmusica.vo.Artista;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @Repository
 public class ArtistaDaoJPA implements ArtistaDAO {
@@ -35,4 +36,10 @@ public class ArtistaDaoJPA implements ArtistaDAO {
                 .setParameter("nombre", "%" + nombre + "%")
                 .getResultList();
     }
+    
+    @Override
+    @Transactional
+    public Artista actualizar(Artista artista) {
+        return entityManager.merge(artista);
+    }	
 }

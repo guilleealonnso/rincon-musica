@@ -1,6 +1,9 @@
 package com.tfg.rinconmusica.controller;
 
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.tfg.rinconmusica.service.ActualizacionSpotifyService;
 
@@ -13,11 +16,6 @@ public class SpotifyController {
 
     public SpotifyController(ActualizacionSpotifyService actualizacionSpotifyService) {
         this.actualizacionSpotifyService = actualizacionSpotifyService;
-    }
-
-    @PostMapping("/rellenar-ids")
-    public String rellenarIdsSpotify() {
-        return actualizacionSpotifyService.rellenarIdsSpotify();
     }
 
     @PostMapping("/actualizar-popularidad")

@@ -13,4 +13,5 @@ public interface AlbumDAO {
     List<Album> buscarPorTitulo(String titulo);
 
     List<Album> obtenerPorArtista(Integer artistaId);
+    Album actualizar(Album album);
 }

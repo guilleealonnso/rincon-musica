@@ -9,6 +9,7 @@ import com.tfg.rinconmusica.vo.Album;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 
 @Repository
 public class AlbumDaoJPA implements AlbumDAO {
@@ -42,5 +43,10 @@ public class AlbumDaoJPA implements AlbumDAO {
                 .createQuery("FROM Album a WHERE a.artista.id = :artistaId", Album.class)
                 .setParameter("artistaId", artistaId)
                 .getResultList();
+    }
+    @Override
+    @Transactional
+    public Album actualizar(Album album) {
+        return entityManager.merge(album);
     }
 }

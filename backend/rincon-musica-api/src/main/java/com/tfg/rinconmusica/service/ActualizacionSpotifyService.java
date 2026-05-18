@@ -19,58 +19,6 @@ public class ActualizacionSpotifyService {
         this.spotifyService = spotifyService;
     }
 
-    public String rellenarIdsSpotify() {
-        String accessToken = spotifyService.obtenerAccessToken();
-
-        if (accessToken == null) {
-            return "No se pudo obtener token de Spotify.";
-        }
-
-        List<Cancion> cancionesSinId = cancionService.obtenerTodas()
-                .stream()
-                .filter(c -> c.getIdSpotify() == null || c.getIdSpotify().isBlank())
-                .limit(10)
-                .toList();
-
-        int actualizadas = 0;
-        int sinResultado = 0;
-
-        for (Cancion cancion : cancionesSinId) {
-
-            if (cancion.getArtista() == null) {
-                sinResultado++;
-                continue;
-            }
-
-            String idSpotify = spotifyService.buscarIdSpotifyCancion(
-                    cancion.getTitulo(),
-                    cancion.getArtista().getNombre(),
-                    accessToken
-            );
-
-            if (idSpotify == null) {
-                sinResultado++;
-                System.out.println("Sin resultado: " + cancion.getTitulo());
-                continue;
-            }
-
-            cancion.setIdSpotify(idSpotify);
-            cancionService.actualizar(cancion);
-            actualizadas++;
-
-            System.out.println("ID añadido: "
-                    + cancion.getTitulo()
-                    + " → "
-                    + idSpotify);
-
-            pausarPeticion();
-        }
-
-        return "Proceso terminado. Actualizadas: " + actualizadas
-                + ", sin resultado: " + sinResultado
-                + ", procesadas: " + cancionesSinId.size();
-    }
-
     @Scheduled(cron = "0 0 3 * * *")
     public void actualizarPopularidadCanciones() {
         String accessToken = spotifyService.obtenerAccessToken();

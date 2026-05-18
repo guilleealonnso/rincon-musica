@@ -4,7 +4,11 @@ import java.util.Base64;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.*;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpMethod;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
@@ -93,60 +97,6 @@ public class SpotifyService {
 
         } catch (Exception e) {
             System.out.println("Error obteniendo popularidad de Spotify para ID: " + idSpotify);
-            System.out.println(e.getMessage());
-            return null;
-        }
-    }
-
-    public String buscarIdSpotifyCancion(String titulo, String artista, String accessToken) {
-        String consulta = titulo + " " + artista;
-        return buscarEnSpotify(consulta, accessToken);
-    }
-
-    private String buscarEnSpotify(String consulta, String accessToken) {
-        String url = "https://api.spotify.com/v1/search?q={consulta}&type=track&limit=1&market=ES";
-
-        HttpHeaders headers = new HttpHeaders();
-        headers.setBearerAuth(accessToken);
-
-        HttpEntity<Void> request = new HttpEntity<>(headers);
-
-        try {
-            ResponseEntity<Map> response = restTemplate.exchange(
-                    url,
-                    HttpMethod.GET,
-                    request,
-                    Map.class,
-                    consulta
-            );
-
-            if (response.getBody() == null) {
-                return null;
-            }
-
-            Map tracks = (Map) response.getBody().get("tracks");
-
-            if (tracks == null) {
-                return null;
-            }
-
-            java.util.List items = (java.util.List) tracks.get("items");
-
-            if (items == null || items.isEmpty()) {
-                return null;
-            }
-
-            Map primerResultado = (Map) items.get(0);
-            Object id = primerResultado.get("id");
-
-            if (id == null) {
-                return null;
-            }
-
-            return id.toString();
-
-        } catch (Exception e) {
-            System.out.println("Error buscando canción en Spotify: " + consulta);
             System.out.println(e.getMessage());
             return null;
         }

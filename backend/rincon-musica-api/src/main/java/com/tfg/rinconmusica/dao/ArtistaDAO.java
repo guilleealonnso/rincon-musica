@@ -11,4 +11,6 @@ public interface ArtistaDAO {
     Artista obtenerById(Integer id);
 
     List<Artista> buscarPorNombre(String nombre);
+    
+    Artista actualizar(Artista artista);
 }
