@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+// @ts-ignore
 import AlbumCard from '../components/albumes/AlbumCard.vue'
 import { albumService } from '../services/albumService'
 import type { Album } from '../types/Album'

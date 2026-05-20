@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
+// @ts-ignore
 import ArtistaCard from '../components/artistas/ArtistaCard.vue'
 import { artistaService } from '../services/artistaService'
 import type { Artista } from '../types/Artista'

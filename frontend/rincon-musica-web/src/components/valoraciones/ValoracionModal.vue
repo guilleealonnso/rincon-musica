@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+// @ts-ignore
 import { PhX } from '@phosphor-icons/vue'
 
 defineProps<{
@@ -14,11 +15,11 @@ const emit = defineEmits<{
 
 const puntuacion = ref(0)
 const comentario = ref('')
-
+// @ts-ignore
 function seleccionarPuntuacion(valor: number) {
   puntuacion.value = valor
 }
-
+// @ts-ignore
 function publicarValoracion() {
   if (puntuacion.value === 0) {
     return

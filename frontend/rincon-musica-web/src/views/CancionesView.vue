@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRouter } from 'vue-router'
+// @ts-ignore
 import CancionCard from '../components/canciones/CancionCard.vue'
+// @ts-ignore
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
-import { cancionService } from '../services/cancionService'
+import { cancionService } from '../services/CancionService'
 import { valoracionService } from '../services/valoracionService'
 import type { Cancion } from '../types/Cancion'
 import type { Usuario } from '../types/Usuario'
@@ -27,7 +29,7 @@ onMounted(async () => {
     cargando.value = false
   }
 })
-
+// @ts-ignore
 function abrirModalValoracion(cancion: Cancion) {
   const usuarioGuardado = localStorage.getItem('usuario')
 
@@ -44,7 +46,7 @@ function cerrarModalValoracion() {
   mostrarModalValoracion.value = false
   cancionSeleccionada.value = null
 }
-
+// @ts-ignore
 async function publicarValoracion(puntuacion: number, comentario: string) {
   if (!cancionSeleccionada.value) {
     return

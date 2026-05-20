@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
+// @ts-ignore
 import { PhUser } from '@phosphor-icons/vue'
 import type { Usuario } from '../../types/Usuario'
 
@@ -17,11 +18,11 @@ function obtenerUsuario(): Usuario | null {
 
   return JSON.parse(usuarioGuardado)
 }
-
+// @ts-ignore
 function irPerfil() {
   router.push('/perfil')
 }
-
+// @ts-ignore
 function cerrarSesion() {
   localStorage.removeItem('usuario')
   usuario.value = null

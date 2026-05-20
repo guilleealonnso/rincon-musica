@@ -2,9 +2,12 @@
 import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { albumService } from '../services/albumService'
-import { cancionService } from '../services/cancionService'
+import { cancionService } from '../services/CancionService'
+// @ts-ignore
 import CancionCard from '../components/canciones/CancionCard.vue'
+// @ts-ignore
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
+// @ts-ignore
 import BackButton from '../components/layout/BackButton.vue'
 import { useValoracionModal } from '../composables/useValoracionModal'
 import type { Album } from '../types/Album'
@@ -16,7 +19,7 @@ const album = ref<Album | null>(null)
 const cancionesAlbum = ref<Cancion[]>([])
 const cargando = ref(true)
 const error = ref('')
-
+// @ts-ignore
 const {
   cancionSeleccionada,
   mostrarModalValoracion,

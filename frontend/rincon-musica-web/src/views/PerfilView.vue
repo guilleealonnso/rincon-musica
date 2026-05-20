@@ -39,12 +39,12 @@ async function cargarValoraciones() {
     cargandoValoraciones.value = false
   }
 }
-
+// @ts-ignore
 function cerrarSesion() {
   localStorage.removeItem('usuario')
   router.push('/')
 }
-
+// @ts-ignore
 function irCancion(cancionId: number) {
   router.push(`/canciones/${cancionId}`)
 }

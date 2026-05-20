@@ -1,0 +1,187 @@
+-- MySQL dump 10.13  Distrib 8.0.19, for Win64 (x86_64)
+--
+-- Host: localhost    Database: rincon_musica
+-- ------------------------------------------------------
+-- Server version	5.5.5-10.4.32-MariaDB
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!50503 SET NAMES utf8mb4 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `album`
+--
+
+DROP TABLE IF EXISTS `album`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `album` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `titulo` varchar(200) NOT NULL,
+  `anyo` int(11) DEFAULT NULL,
+  `numero_canciones` int(11) DEFAULT NULL,
+  `imagen_url` varchar(500) DEFAULT NULL,
+  `artista_id` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `artista_id` (`artista_id`),
+  CONSTRAINT `album_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artista` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `album`
+--
+
+LOCK TABLES `album` WRITE;
+/*!40000 ALTER TABLE `album` DISABLE KEYS */;
+INSERT INTO `album` VALUES (1,'AM',2013,3,'https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163',1),(2,'Favourite Worst Nightmare',2007,2,'https://i.scdn.co/image/ab67616d0000b273b1f8da74f225fa1225cdface',1),(3,'After Hours',2020,3,'https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36',2),(4,'Starboy',2016,2,'https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a',2),(5,'MOTOMAMI',2022,3,'https://i.scdn.co/image/ab67616d0000b273ac8367a27c0eb7195dc3a58d',3),(6,'El Mal Querer',2018,2,'https://i.scdn.co/image/ab67616d0000b273de5ae2419d2cc88d8070ef3b',3),(7,'Un Verano Sin Ti',2022,3,'https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72',4),(8,'YHLQMDLG',2020,2,'https://i.scdn.co/image/ab67616d0000b273548f7ec52da7313de0c5e4a0',4),(9,'Future Nostalgia',2020,3,'https://i.scdn.co/image/ab67616d0000b273c88bae7846e62a8ba59ee0bd',5),(10,'Dua Lipa',2017,2,'https://i.scdn.co/image/ab67616d0000b2735966dfc026a261d899bc9d54',5),(11,'A Rush of Blood to the Head',2002,3,'https://i.scdn.co/image/ab67616d0000b273de09e02aa7febf30b7c02d82',6),(12,'Parachutes',2000,2,'https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a',6),(13,'1989',2014,3,'https://i.scdn.co/image/ab67616d0000b27352b2a3824413eefe9e33817a',7),(14,'Folklore',2020,2,'https://i.scdn.co/image/ab67616d0000b27395f754318336a07e85ec59bc',7),(15,'DAMN.',2017,3,'https://i.scdn.co/image/ab67616d0000b2738b52c6b9bc4e43d873869699',8),(16,'Good Kid, M.A.A.D City',2012,2,'https://i.scdn.co/image/ab67616d0000b2732cd55246d935a8a77cb4859e',8),(17,'When We All Fall Asleep, Where Do We Go?',2019,3,'https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce',9),(18,'Happier Than Ever',2021,2,'https://i.scdn.co/image/ab67616d0000b2737a152619a7b55bc621d07901',9),(19,'A Night at the Opera',1975,3,'https://i.scdn.co/image/ab67616d0000b273e319baafd16e84f0408af2a0',10),(20,'The Game',1980,2,'https://i.scdn.co/image/ab67616d0000b273056e90910cbaf5c5b892aeba',10),(21,'OK Computer',1997,3,'https://i.scdn.co/image/ab67616d0000b273c8b444df094279e70d0ed856',11),(22,'In Rainbows',2007,2,'https://i.scdn.co/image/ab67616d0000b273de3c04b5fc750b68899b20a9',11),(23,'Random Access Memories',2013,3,'https://i.scdn.co/image/ab67616d0000b2739b9b36b0e22870b9f542d937',12),(24,'Discovery',2001,2,'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e021e81bff9807a9e629fce5ade',12),(25,'Doo-Wops & Hooligans',2010,3,'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e027039c1c841fc3dfa2ad8a0d8',13),(26,'24K Magic',2016,2,'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02232711f7d66a1e19e89e28c5',13),(27,'21',2011,3,'https://image-cdn-ak.spotifycdn.com/image/ab67616d00001e027e7e5dd9d1ab19fcded8a17f',14),(28,'25',2015,2,'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e025ffbbc3dca25d5c81491af1f',14),(29,'Night Visions',2012,3,'https://i.scdn.co/image/ab67616d0000b273532033d0d90736f661c13d35',15),(30,'Evolve',2017,2,'https://i.scdn.co/image/ab67616d0000b2735675e83f707f1d7271e5cf8a',15),(31,'Born to Die',2012,3,'https://i.scdn.co/image/ab67616d0000b273cb76604d9c5963544cf5be64',16),(32,'Astroworld',2018,3,'https://i.scdn.co/image/ab67616d0000b273cc7bfe087a97a09f54c92b28',17),(33,'Currents',2015,3,'https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79',18),(34,'Lemonade',2016,3,'https://i.scdn.co/image/ab67616d0000b2738db37bc9a58543471bee78c5',19),(35,'Demon Days',2005,3,'https://i.scdn.co/image/ab67616d0000b27399c9df43dca9379a1f0401ba',20),(36,'Harry\'s House',2022,3,'https://i.scdn.co/image/ab67616d0000b27382ce362511fb3d9dda6578ee',21),(37,'SOUR',2021,3,'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a',22),(38,'Hollywood\'s Bleeding',2019,3,'https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02',23),(39,'SOS',2022,3,'https://i.scdn.co/image/ab67616d0000b273bc18bdade69ec5ef0bb25b17',24),(40,'Master of Puppets',1986,2,'https://i.scdn.co/image/ab67616d0000b273668e3aca3167e6e569a9aa20',25);
+/*!40000 ALTER TABLE `album` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `artista`
+--
+
+DROP TABLE IF EXISTS `artista`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `artista` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(150) NOT NULL,
+  `imagen_url` varchar(500) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `artista`
+--
+
+LOCK TABLES `artista` WRITE;
+/*!40000 ALTER TABLE `artista` DISABLE KEYS */;
+INSERT INTO `artista` VALUES (1,'Arctic Monkeys','https://i.scdn.co/image/ab6761610000e5eb7da39dea0a72f581535fb11f'),(2,'The Weeknd','https://i.scdn.co/image/ab6761610000e5ebc1719ac9e6a75c1c25835018'),(3,'Rosalia','https://i.scdn.co/image/ab6761610000e5eb9354faf80eb87961466edfbf'),(4,'Bad Bunny','https://i.scdn.co/image/ab6761610000e5eb81f47f44084e0a09b5f0fa13'),(5,'Dua Lipa','https://i.scdn.co/image/ab6761610000e5eb0c68f6c95232e716f0abee8d'),(6,'Coldplay','https://i.scdn.co/image/ab6761610000e5eb1ba8fc5f5c73e7e9313cc6eb'),(7,'Taylor Swift','https://i.scdn.co/image/ab6761610000e5ebe2e8e7ff002a4afda1c7147e'),(8,'Kendrick Lamar','https://i.scdn.co/image/ab6761610000e5eb39ba6dcd4355c03de0b50918'),(9,'Billie Eilish','https://i.scdn.co/image/ab6761610000e5eb4a21b4760d2ecb7b0dcdc8da'),(10,'Queen','https://i.scdn.co/image/ab6772690000c46c47488c35a509d42072c23976'),(11,'Radiohead','https://i.scdn.co/image/ab6761610000e5eb4104fbd80f1f795728abbd59'),(12,'Daft Punk','https://i.scdn.co/image/ab6761610000e5ebd3aa7cc0e419b6c459b08e8e'),(13,'Bruno Mars','https://image-cdn-fa.spotifycdn.com/image/ab67616100005174c7688aad1bf03986934d7e26'),(14,'Adele','https://image-cdn-ak.spotifycdn.com/image/ab6761610000517468f6e5892075d7f22615bd17'),(15,'Imagine Dragons','https://i.scdn.co/image/ab6761610000e5ebab47d8dae2b24f5afe7f9d38'),(16,'Lana Del Rey','https://i.scdn.co/image/ab6761610000e5ebb99cacf8acd5378206767261'),(17,'Travis Scott','https://i.scdn.co/image/ab6761610000e5eb19c2790744c792d05570bb71'),(18,'Tame Impala','https://i.scdn.co/image/ab6761610000e5ebe412a782245eb20d9626c601'),(19,'Beyonce','https://i.scdn.co/image/ab6761610000e5eb7eaa373538359164b843f7c0'),(20,'Gorillaz','https://i.scdn.co/image/ab6761610000e5ebdd5b57b40cf2aaeccd07835e'),(21,'Harry Styles','https://i.scdn.co/image/ab6761610000e5ebe309f8c3056a59f20d0968ca'),(22,'Olivia Rodrigo','https://i.scdn.co/image/ab6761610000e5ebe654806251e2661def1f4e65'),(23,'Post Malone','https://i.scdn.co/image/ab6761610000e5ebe17c0aa1714a03d62b5ce4e0'),(24,'SZA','https://i.scdn.co/image/ab6761610000e5ebfd0a9fb6c252a3ba44079acf'),(25,'Metallica','https://i.scdn.co/image/ab6761610000e5eb69ca98dd3083f1082d740e44'),(26,'The Strokes','https://image-cdn-fa.spotifycdn.com/image/ab67616100005174c3b137793230f4043feb0089'),(27,'C. Tangana','https://image-cdn-fa.spotifycdn.com/image/ab67616100005174dfb9d2cb6a43021d9002a10e'),(28,'Aitana','https://image-cdn-fa.spotifycdn.com/image/ab67616100005174f70cb5cef7d3848570900de5'),(29,'Eminem','https://image-cdn-ak.spotifycdn.com/image/ab67616100005174a00b11c129b27a88fc72f36b'),(30,'Rihanna','https://image-cdn-fa.spotifycdn.com/image/ab67616100005174cb565a8e684e3be458d329ac');
+/*!40000 ALTER TABLE `artista` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `cancion`
+--
+
+DROP TABLE IF EXISTS `cancion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cancion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_spotify` varchar(100) DEFAULT NULL,
+  `titulo` varchar(200) NOT NULL,
+  `duracion` int(11) DEFAULT NULL,
+  `popularidad` int(11) DEFAULT NULL,
+  `genero` varchar(50) DEFAULT NULL,
+  `anyo` int(11) DEFAULT NULL,
+  `imagen_url` varchar(500) DEFAULT NULL,
+  `ult_act` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `artista_id` int(11) NOT NULL,
+  `album_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `id_spotify` (`id_spotify`),
+  KEY `artista_id` (`artista_id`),
+  KEY `album_id` (`album_id`),
+  CONSTRAINT `cancion_ibfk_1` FOREIGN KEY (`artista_id`) REFERENCES `artista` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `cancion_ibfk_2` FOREIGN KEY (`album_id`) REFERENCES `album` (`id`) ON DELETE SET NULL,
+  CONSTRAINT `CONSTRAINT_1` CHECK (`popularidad` between 0 and 100)
+) ENGINE=InnoDB AUTO_INCREMENT=105 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cancion`
+--
+
+LOCK TABLES `cancion` WRITE;
+/*!40000 ALTER TABLE `cancion` DISABLE KEYS */;
+INSERT INTO `cancion` VALUES (1,'5FVd6KXrgO9B3JPmC8OPst','Do I Wanna Know?',272,89,'Indie Rock',2013,'https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163','2026-05-19 17:30:43',1,1),(2,'2AT8iROs4FQueDv2c8q2KE','R U Mine?',201,83,'Indie Rock',2013,'https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163','2026-05-12 19:13:42',1,1),(3,'7nzsY8vlnKdvGOEE0rjAXZ','Arabella',207,77,'Indie Rock',2013,'https://i.scdn.co/image/ab67616d0000b2734ae1c4c5c45aabe565499163','2026-05-10 17:30:43',1,1),(4,'7f9I5WdyXm5q1XqnSYgQZb','Brianstorm',173,69,'Indie Rock',2007,'https://i.scdn.co/image/ab67616d0000b273b1f8da74f225fa1225cdface','2026-05-10 17:30:43',1,2),(5,'2x8evxqUlF0eRabbW2JBJd','Fluorescent Adolescent',181,79,'Indie Rock',2007,'https://i.scdn.co/image/ab67616d0000b273b1f8da74f225fa1225cdface','2026-05-10 17:30:43',1,2),(6,'0VjIjW4GlUZAMYd2vXMi3b','Blinding Lights',200,91,'Pop',2020,'https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36','2026-05-12 19:13:42',2,3),(7,'5QO79kh1waicV47BqGRL3g','Save Your Tears',215,88,'Pop',2020,'https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36','2026-05-12 19:13:42',2,3),(8,'2p8IUWQDrpjuFltbdgLOag','After Hours',361,83,'R&B',2020,'https://i.scdn.co/image/ab67616d0000b2738863bc11d2aa12b54f5aeb36','2026-05-10 17:30:43',2,3),(9,'7MXVkk9YMctZqd1Srtv4MB','Starboy',230,92,'R&B',2016,'https://i.scdn.co/image/ab67616d0000b2734718e2b124f79258be7bc452','2026-05-12 19:13:42',2,4),(10,'2LBqCSwhJGcFQeTHMVGwy3','Die For You',260,87,'R&B',2016,'https://i.scdn.co/image/ab67616d0000b273a048415db06a5b6fa7ec4e1a','2026-05-10 17:30:43',2,4),(11,'2FYGZDfsAnNsrm1gVbyKnG','SAOKO',137,68,'Urbano',2022,'https://i.scdn.co/image/ab67616d0000b273ac8367a27c0eb7195dc3a58d','2026-05-10 17:30:43',3,5),(12,'5ildQOEKmJuWGl2vRkFdYc','DESPECHA',157,73,'Pop',2022,'https://i.scdn.co/image/ab67616d0000b273938660520f09a1bae2ed4699','2026-05-12 19:13:42',3,5),(13,'4kXxEhuatrvwrTQycA7s9B','BIZCOCHITO',109,68,'Urbano',2022,'https://i.scdn.co/image/ab67616d0000b273ac8367a27c0eb7195dc3a58d','2026-05-10 17:30:43',3,5),(14,'5zOAudPQIs5U8zP6LQGHmH','MALAMENTE',150,50,'Flamenco Pop',2018,'https://i.scdn.co/image/ab67616d0000b273c46794640f6860a8c287f779','2026-05-12 19:13:42',3,6),(15,'0qKxqVcFCMmrjjvIgjjEE6','PIENSO EN TU MIRA',194,46,'Flamenco Pop',2018,'https://i.scdn.co/image/ab67616d0000b273de5ae2419d2cc88d8070ef3b','2026-05-12 19:13:42',3,6),(16,'6Xom58OOXk2SoU711L2IXO','Moscow Mule',245,86,'Reggaeton',2022,'https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72','2026-05-12 19:13:42',4,7),(17,'1IHWl5LamUGEuP4ozKQSXZ','Titi Me Pregunto',243,93,'Reggaeton',2022,'https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72','2026-05-10 17:30:43',4,7),(18,'5Eax0qFko2dh7Rl2lYs3bx','Efecto',213,83,'Reggaeton',2022,'https://i.scdn.co/image/ab67616d0000b27349d694203245f241a1bcaa72','2026-05-12 19:13:42',4,7),(19,'2DEZmgHKAvm41k4J3R2E9Y','Safaera',295,84,'Reggaeton',2020,'https://i.scdn.co/image/ab67616d0000b273548f7ec52da7313de0c5e4a0','2026-05-12 19:13:42',4,8),(20,'6NfrH0ANGmgBXyxgV2PeXt','La Dificil',163,74,'Reggaeton',2020,'https://i.scdn.co/image/ab67616d0000b273548f7ec52da7313de0c5e4a0','2026-05-10 17:30:43',4,8),(21,'39LLxExYz6ewLAcYrzQQyP','Levitating',203,82,'Pop',2020,'https://i.scdn.co/image/ab67616d0000b273c88bae7846e62a8ba59ee0bd','2026-05-12 19:13:42',5,9),(22,'6WrI0LAC5M1Rw2MnX2ZvEg','Don\'t Start Now',183,75,'Pop',2020,'https://i.scdn.co/image/ab67616d0000b273252ba339f802d9cf88122757','2026-05-12 19:13:42',5,9),(23,'3AzjcOeAmA57TIOr9zF1ZW','Physical',193,78,'Pop',2020,'https://i.scdn.co/image/ab67616d0000b273c88bae7846e62a8ba59ee0bd','2026-05-12 19:13:42',5,9),(24,'2ekn2ttSfGqwhhate0LSR0','New Rules',209,79,'Pop',2017,'https://i.scdn.co/image/ab67616d0000b2735966dfc026a261d899bc9d54','2026-05-12 19:13:42',5,10),(25,'76cy1WJvNGJTj78UqeA5zr','IDGAF',218,75,'Pop',2017,'https://i.scdn.co/image/ab67616d0000b2735966dfc026a261d899bc9d54','2026-05-12 19:13:42',5,10),(26,'0BCPKOYdS2jbQ8iyB56Zns','Clocks',307,87,'Rock',2002,'https://i.scdn.co/image/ab67616d0000b273de09e02aa7febf30b7c02d82','2026-05-10 17:30:43',6,11),(27,'75JFxkI2RXiU7L9VXzMkle','The Scientist',310,89,'Rock',2002,'https://i.scdn.co/image/ab67616d0000b273de09e02aa7febf30b7c02d82','2026-05-12 19:13:42',6,11),(28,'2nvC4i2aMo4CzRjRflysah','In My Place',226,76,'Rock',2002,'https://i.scdn.co/image/ab67616d0000b273de09e02aa7febf30b7c02d82','2026-05-10 17:30:43',6,11),(29,'3AJwUDP919kvQ9QcozQPxg','Yellow',267,92,'Rock',2000,'https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a','2026-05-10 17:30:43',6,12),(30,'0R8P9KfGJCDULmlEoBagcO','Trouble',273,75,'Rock',2000,'https://i.scdn.co/image/ab67616d0000b2739164bafe9aaa168d93f4816a','2026-05-10 17:30:43',6,12),(31,'1u8c2t2Cy7UBoG4ArRcF5g','Blank Space',231,85,'Pop',2014,'https://i.scdn.co/image/ab67616d0000b27352b2a3824413eefe9e33817a','2026-05-10 17:30:43',7,13),(32,'0ug5NqcwcFR2xrfTkc7k8e','Style',231,85,'Pop',2014,'https://i.scdn.co/image/ab67616d0000b27352b2a3824413eefe9e33817a','2026-05-12 19:13:42',7,13),(33,'0cqRj7pUJDkTCEsJkx8snD','Shake It Off',219,83,'Pop',2014,'https://i.scdn.co/image/ab67616d0000b27352b2a3824413eefe9e33817a','2026-05-12 19:13:42',7,13),(34,'4R2kfaDFhslZEMJqAFNpdd','Cardigan',239,86,'Indie Pop',2020,'https://i.scdn.co/image/ab67616d0000b27395f754318336a07e85ec59bc','2026-05-10 17:30:43',7,14),(35,'4pvb0WLRcMtbPGmtejJJ6y','Exile',285,80,'Indie Pop',2020,'https://i.scdn.co/image/ab67616d0000b27395f754318336a07e85ec59bc','2026-05-12 19:13:42',7,14),(36,'7KXjTSCq5nL1LoYtL7XAwS','HUMBLE.',177,85,'Rap',2017,'https://i.scdn.co/image/ab67616d0000b2738b52c6b9bc4e43d873869699','2026-05-12 19:13:42',8,15),(37,'6HZILIRieu8S0iqY8kIKhj','DNA.',185,80,'Rap',2017,'https://i.scdn.co/image/ab67616d0000b2738b52c6b9bc4e43d873869699','2026-05-12 19:13:42',8,15),(38,'6PGoSes0D9eUDeeAafB2As','LOVE.',213,84,'Rap',2017,'https://i.scdn.co/image/ab67616d0000b2738b52c6b9bc4e43d873869699','2026-05-12 19:13:42',8,15),(39,'6REbwUNlppTfcnV4d4ZoZi','Swimming Pools',247,84,'Rap',2012,'https://i.scdn.co/image/ab67616d0000b273b5ef185d28724c5573c2ac9c','2026-05-10 17:30:43',8,16),(40,'74tLlkN3rgVzRqQJgPfink','Money Trees',386,82,'Rap',2012,'https://i.scdn.co/image/ab67616d0000b2732cd55246d935a8a77cb4859e','2026-05-10 17:30:43',8,16),(41,'2Fxmhks0bxGSBdJ92vM42m','Bad Guy',194,83,'Pop',2019,'https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce','2026-05-10 17:30:43',9,17),(42,'43zdsphuZLzwA9k4DJhU0I','When The Party\'s Over',196,85,'Pop',2019,'https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce','2026-05-10 17:30:43',9,17),(43,'4SSnFejRGlZikf02HLewEF','Bury A Friend',193,76,'Pop',2019,'https://i.scdn.co/image/ab67616d0000b27350a3147b4edd7701a876c6ce','2026-05-12 19:13:42',9,17),(44,'4RVwu0g32PAqgUiJoXsdF8','Happier Than Ever',298,85,'Pop Rock',2021,'https://i.scdn.co/image/ab67616d0000b2732a038d3bf875d23e4aeaa84e','2026-05-12 19:13:42',9,18),(45,'54bFM56PmE4YLRnqpW6Tha','Therefore I Am',174,70,'Pop',2021,'https://i.scdn.co/image/ab67616d0000b2737a152619a7b55bc621d07901','2026-05-12 19:13:42',9,18),(46,'4u7EnebtmKWzUH433cf5Qv','Bohemian Rhapsody',354,84,'Rock',1975,'https://i.scdn.co/image/ab67616d0000b273e319baafd16e84f0408af2a0','2026-05-12 19:13:42',10,19),(47,'4YJUTdZ0Pgl0ZeNyHYXeLd','Love Of My Life',218,73,'Rock',1975,'https://i.scdn.co/image/ab67616d0000b273733cfd7114c704785e4f8da0','2026-05-10 17:30:43',10,19),(48,'4vhVDkSx9RSb2k6mWFMYNI','You\'re My Best Friend',171,68,'Rock',1975,'https://i.scdn.co/image/ab67616d0000b273e319baafd16e84f0408af2a0','2026-05-10 17:30:43',10,19),(49,'5vdp5UmvTsnMEMESIF2Ym7','Another One Bites The Dust',214,84,'Rock',1980,'https://i.scdn.co/image/ab67616d0000b273056e90910cbaf5c5b892aeba','2026-05-10 17:30:43',10,20),(50,'6xdLJrVj4vIXwhuG8TMopk','Crazy Little Thing Called Love',163,79,'Rock',1980,'https://i.scdn.co/image/ab67616d0000b273056e90910cbaf5c5b892aeba','2026-05-10 17:30:43',10,20),(51,'6LgJvl0Xdtc73RJ1mmpotq','Paranoid Android',383,73,'Alternative Rock',1997,'https://i.scdn.co/image/ab67616d0000b273c8b444df094279e70d0ed856','2026-05-10 17:30:43',11,21),(52,'63OQupATfueTdZMWTxW03A','Karma Police',264,82,'Alternative Rock',1997,'https://i.scdn.co/image/ab67616d0000b273c8b444df094279e70d0ed856','2026-05-10 17:30:43',11,21),(53,'10nyNJ6zNy2YVYLrcwLccB','No Surprises',229,87,'Alternative Rock',1997,'https://i.scdn.co/image/ab67616d0000b273c8b444df094279e70d0ed856','2026-05-10 17:30:43',11,21),(54,'35YyxFpE0ZTOoqFx5bADW8','Nude',255,75,'Alternative Rock',2007,'https://i.scdn.co/image/ab67616d0000b273de3c04b5fc750b68899b20a9','2026-05-12 19:13:42',11,22),(55,'4wajJ1o7jWIg62YqpkHC7S','Weird Fishes',318,79,'Alternative Rock',2007,'https://i.scdn.co/image/ab67616d0000b273de3c04b5fc750b68899b20a9','2026-05-10 17:30:43',11,22),(56,'2Foc5Q5nqNiosCNqttzHof','Get Lucky',369,83,'Electronica',2013,'https://i.scdn.co/image/ab67616d0000b27319a88dd5c7118e87d7b1619e','2026-05-12 19:13:42',12,23),(57,'2cGxRwrMyEAp8dEbuZaVv6','Instant Crush',337,79,'Electronica',2013,'https://i.scdn.co/image/ab67616d0000b2739b9b36b0e22870b9f542d937','2026-05-12 19:13:42',12,23),(58,'5CMjjywI0eZMixPeqNd75R','Lose Yourself To Dance',353,71,'Electronica',2013,'https://i.scdn.co/image/ab67616d0000b2739b9b36b0e22870b9f542d937','2026-05-10 17:30:43',12,23),(59,'0DiWol3AO6WpXZgp0goxAV','One More Time',320,84,'Electronica',2001,'https://i.scdn.co/image/ab67616d0000b2731e81bff9807a9e629fce5ade','2026-05-12 19:13:42',12,24),(60,'2VEZx7NWsZ1D0eJ4uv5Fym','Digital Love',301,73,'Electronica',2001,'https://i.scdn.co/image/ab67616d0000b2731e81bff9807a9e629fce5ade','2026-05-12 19:13:42',12,24),(61,'47Slg6LuqLaX0VodpSCvPt','Just The Way You Are',220,83,'Pop',2010,'https://i.scdn.co/image/ab67616d0000b2738a9eb5a1f701d1d367a5ea10','2026-05-10 17:30:43',13,25),(62,'2tJulUYLDKOg9XrtVkMgcJ','Grenade',222,80,'Pop',2010,'https://i.scdn.co/image/ab67616d0000b2737039c1c841fc3dfa2ad8a0d8','2026-05-12 19:13:42',13,25),(63,'386RUes7n1uM1yfzgeUuwp','The Lazy Song',189,83,'Pop',2010,'https://i.scdn.co/image/ab67616d0000b2738a9eb5a1f701d1d367a5ea10','2026-05-10 17:30:43',13,25),(64,'6b8Be6ljOzmkOmFslEb23P','24K Magic',225,86,'Funk Pop',2016,'https://i.scdn.co/image/ab67616d0000b273232711f7d66a1e19e89e28c5','2026-05-10 17:30:43',13,26),(65,'0KKkJNfGyhkQ5aFogxQAPU','That\'s What I Like',206,92,'Funk Pop',2016,'https://i.scdn.co/image/ab67616d0000b273232711f7d66a1e19e89e28c5','2026-05-10 17:30:43',13,26),(66,'4OSBTYWVwsQhGLF9NHvIbR','Rolling In The Deep',228,82,'Soul Pop',2011,'https://i.scdn.co/image/ab67616d0000b273e63ac9f24aab9acc90f81960','2026-05-10 17:30:43',14,27),(67,'3bNv3VuUOKgrf5hu3YcuRo','Someone Like You',285,83,'Soul Pop',2011,'https://i.scdn.co/image/ab67616d0000b273e63ac9f24aab9acc90f81960','2026-05-10 17:30:43',14,27),(68,'3di5hcvxxciiqwMH1jarhY','Set Fire To The Rain',242,84,'Soul Pop',2011,'https://i.scdn.co/image/ab67616d0000b273e63ac9f24aab9acc90f81960','2026-05-10 17:30:43',14,27),(69,'1Yk0cQdMLx5RzzFTYwmuld','Hello',295,77,'Soul Pop',2015,'https://i.scdn.co/image/ab67616d0000b2737b9888dc365b8f957c63df14','2026-05-10 17:30:43',14,28),(70,'6O5TrlFWTYvznd9fMC0VvU','When We Were Young',290,79,'Soul Pop',2015,'https://i.scdn.co/image/ab67616d0000b2737b9888dc365b8f957c63df14','2026-05-10 17:30:43',14,28),(71,'62yJjFtgkhUrXktIoSjgP2','Radioactive',187,81,'Pop Rock',2012,'https://i.scdn.co/image/ab67616d0000b273407bd04707c463bbb3410737','2026-05-10 17:30:43',15,29),(72,'5qaEfEh1AtSdrdrByCP7qR','Demons',177,85,'Pop Rock',2012,'https://i.scdn.co/image/ab67616d0000b273407bd04707c463bbb3410737','2026-05-10 17:30:43',15,29),(73,'1j8z4TTjJ1YOdoFEDwJTQa','It\'s Time',237,80,'Pop Rock',2012,'https://i.scdn.co/image/ab67616d0000b273532033d0d90736f661c13d35','2026-05-12 19:13:42',15,29),(74,'0pqnGHJpmpxLKifKRmU6WP','Believer',204,88,'Pop Rock',2017,'https://i.scdn.co/image/ab67616d0000b2735675e83f707f1d7271e5cf8a','2026-05-12 19:13:42',15,30),(75,'1zB4vmk8tFRmM9UULNzbLB','Thunder',187,87,'Pop Rock',2017,'https://i.scdn.co/image/ab67616d0000b2735675e83f707f1d7271e5cf8a','2026-05-10 17:30:43',15,30),(76,'4Ouhoi2lAhrLJKFzUqEzwl','Born To Die',286,80,'Indie Pop',2012,'https://i.scdn.co/image/ab67616d0000b273ebc8cfac8b586bc475b04918','2026-05-10 17:30:43',16,31),(77,'0fBSs3fRoh1yJcne77fdu9','Video Games',282,80,'Indie Pop',2012,'https://i.scdn.co/image/ab67616d0000b273ebc8cfac8b586bc475b04918','2026-05-12 19:13:42',16,31),(78,'2dBwB667LHQkLhdYlwLUZK','Summertime Sadness',265,68,'Indie Pop',2012,'https://i.scdn.co/image/ab67616d0000b273cb76604d9c5963544cf5be64','2026-05-12 19:13:42',16,31),(79,'2xLMifQCjDGFmkHkpNLD9h','SICKO MODE',312,84,'Rap',2018,'https://i.scdn.co/image/ab67616d0000b273daec894c14c0ca42d76eeb32','2026-05-12 19:13:42',17,32),(80,'7wBJfHzpfI3032CSD7CE2m','STARGAZING',270,75,'Rap',2018,'https://i.scdn.co/image/ab67616d0000b273daec894c14c0ca42d76eeb32','2026-05-12 19:13:42',17,32),(81,'3eekarcy7kvN4yt5ZFzltW','YOSEMITE',150,84,'Rap',2018,'https://i.scdn.co/image/ab67616d0000b273cc7bfe087a97a09f54c92b28','2026-05-12 19:13:42',17,32),(82,'2X485T9Z5Ly0xyaghN73ed','Let It Happen',467,87,'Psychedelic Pop',2015,'https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79','2026-05-12 19:13:42',18,33),(83,'6K4t31amVTZDgR3sKmwUJJ','The Less I Know The Better',216,91,'Psychedelic Pop',2015,'https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79','2026-05-10 17:30:43',18,33),(84,'5M4yti0QxgqJieUYaEXcpw','Eventually',318,81,'Psychedelic Pop',2015,'https://i.scdn.co/image/ab67616d0000b2739e1cfc756886ac782e363d79','2026-05-10 17:30:43',18,33),(85,'6g0Orsxv6glTJCt4cHsRsQ','Formation',206,72,'R&B',2016,'https://i.scdn.co/image/ab67616d0000b2738db37bc9a58543471bee78c5','2026-05-10 17:30:43',19,34),(86,'0lnIJmgcUpEpe4AZACjayW','Sorry',233,68,'R&B',2016,'https://i.scdn.co/image/ab67616d0000b2738db37bc9a58543471bee78c5','2026-05-10 17:30:43',19,34),(87,'0rzNMzZsubFcXSEh7dnem7','Hold Up',221,68,'R&B',2016,'https://i.scdn.co/image/ab67616d0000b2738db37bc9a58543471bee78c5','2026-05-10 17:30:43',19,34),(88,'0d28khcov6AiegSCpG5TuT','Feel Good Inc.',222,91,'Alternative',2005,'https://i.scdn.co/image/ab67616d0000b273622aefd794f6fe4d8e714358','2026-05-12 19:13:42',20,35),(89,'4Hff1IjRbLGeLgFgxvHflk','DARE',245,83,'Alternative',2005,'https://i.scdn.co/image/ab67616d0000b273622aefd794f6fe4d8e714358','2026-05-10 17:30:43',20,35),(90,'254dHcOahgsgLPchCcUnnf','Kids With Guns',225,0,'Alternative',2005,'https://i.scdn.co/image/ab67616d0000b27399c9df43dca9379a1f0401ba','2026-05-12 19:22:44',20,35),(91,'4Dvkj6JhhA12EX05fT7y2e','As It Was',167,92,'Pop',2022,'https://i.scdn.co/image/ab67616d0000b27382ce362511fb3d9dda6578ee','2026-05-10 17:30:43',21,36),(92,'1qEmFfgcLObUfQm0j1W2CK','Late Night Talking',178,79,'Pop',2022,'https://i.scdn.co/image/ab67616d0000b27382ce362511fb3d9dda6578ee','2026-05-10 17:30:43',21,36),(93,'6uvh0In7u1Xn4HgxOfAn8O','Matilda',245,82,'Pop',2022,'https://i.scdn.co/image/ab67616d0000b27382ce362511fb3d9dda6578ee','2026-05-12 19:19:42',21,36),(94,'7lPN2DXiMsVn7XUKtOW1CS','Drivers License',242,73,'Pop',2021,'https://i.scdn.co/image/ab67616d0000b2738ffc294c1c4362e8472d14cd','2026-05-12 19:19:42',22,37),(95,'4ZtFanR9U6ndgddUvNcjcG','Good 4 U',178,85,'Pop Rock',2021,'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a','2026-05-10 17:30:43',22,37),(96,'6HU7h9RYOaPRFeh0R3UeAr','Deja Vu',215,88,'Pop',2021,'https://i.scdn.co/image/ab67616d0000b273a91c10fe9472d9bd89802e5a','2026-05-12 19:19:42',22,37),(97,'21jGcNKet2qwijlDFuPiPb','Circles',215,87,'Pop Rap',2019,'https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02','2026-05-12 19:19:36',23,38),(98,'7sWRlDoTDX8geTR8zzr2vt','Hollywood\'s Bleeding',156,74,'Pop Rap',2019,'https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02','2026-05-12 19:19:36',23,38),(99,'0t3ZvGKlmYmVsDzBJAXK8C','Goodbyes',174,78,'Pop Rap',2019,'https://i.scdn.co/image/ab67616d0000b2739478c87599550dd73bfa7e02','2026-05-12 19:19:36',23,38),(100,'1Qrg8KqiBpW07V7PNxwwwL','Kill Bill',154,83,'R&B',2022,'https://i.scdn.co/image/ab67616d0000b273c5276ed6cb0287df8d9be07f','2026-05-10 17:30:43',24,39),(101,'5Y35SjAfXjjG0sFQ3KOxmm','Nobody Gets Me',180,85,'R&B',2022,'https://i.scdn.co/image/ab67616d0000b273bc18bdade69ec5ef0bb25b17','2026-05-12 19:19:36',24,39),(102,'4iZ4pt7kvcaH6Yo8UoZ4s2','Snooze',201,88,'R&B',2022,'https://i.scdn.co/image/ab67616d0000b273bc18bdade69ec5ef0bb25b17','2026-05-12 19:19:09',24,39),(103,'2MuWTIM3b0YEAskbeeFE1i','Master Of Puppets',515,81,'Metal',1986,'https://i.scdn.co/image/ab67616d0000b273668e3aca3167e6e569a9aa20','2026-05-12 19:19:28',25,40),(104,'6UB9mShVLbMm0W4e6vud4C','Battery',312,75,'Metal',1986,'https://image-cdn-fa.spotifycdn.com/image/ab67616d00001e02cad4832cb7b5844343278daa','2026-05-20 10:47:19',25,40);
+/*!40000 ALTER TABLE `cancion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `usuario`
+--
+
+DROP TABLE IF EXISTS `usuario`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `usuario` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `username` varchar(100) NOT NULL,
+  `email` varchar(150) NOT NULL,
+  `password` varchar(255) NOT NULL,
+  `fecha_registro` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `username` (`username`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `usuario`
+--
+
+LOCK TABLES `usuario` WRITE;
+/*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
+INSERT INTO `usuario` VALUES (6,'guilleealonnso','guillee456789@gmail.com','aaa','2026-05-19 19:23:51');
+/*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `valoracion`
+--
+
+DROP TABLE IF EXISTS `valoracion`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `valoracion` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `usuario_id` int(11) NOT NULL,
+  `cancion_id` int(11) NOT NULL,
+  `puntuacion` int(11) NOT NULL,
+  `comentario` text DEFAULT NULL,
+  `fecha` timestamp NOT NULL DEFAULT current_timestamp(),
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `usuario_id` (`usuario_id`,`cancion_id`),
+  KEY `cancion_id` (`cancion_id`),
+  CONSTRAINT `valoracion_ibfk_1` FOREIGN KEY (`usuario_id`) REFERENCES `usuario` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `valoracion_ibfk_2` FOREIGN KEY (`cancion_id`) REFERENCES `cancion` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `CONSTRAINT_1` CHECK (`puntuacion` between 1 and 5)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `valoracion`
+--
+
+LOCK TABLES `valoracion` WRITE;
+/*!40000 ALTER TABLE `valoracion` DISABLE KEYS */;
+INSERT INTO `valoracion` VALUES (2,6,1,2,'','2026-05-19 19:33:09'),(3,6,17,2,'aaaa','2026-05-19 19:56:54'),(4,6,12,5,'a','2026-05-19 20:04:12'),(5,6,6,5,'llll','2026-05-20 18:13:11'),(6,6,2,5,'','2026-05-20 22:31:33');
+/*!40000 ALTER TABLE `valoracion` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'rincon_musica'
+--
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2026-05-21  0:49:42

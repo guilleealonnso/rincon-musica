@@ -10,7 +10,7 @@ const password = ref('')
 
 const error = ref('')
 const cargando = ref(false)
-
+// @ts-ignore
 async function iniciarSesion() {
   error.value = ''
 

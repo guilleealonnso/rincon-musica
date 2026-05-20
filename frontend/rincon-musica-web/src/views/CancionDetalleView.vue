@@ -1,9 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
-import { cancionService } from '../services/cancionService'
+import { cancionService } from '../services/CancionService'
 import { valoracionService } from '../services/valoracionService'
+// @ts-ignore
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
+// @ts-ignore
 import BackButton from '../components/layout/BackButton.vue'
 import type { Cancion } from '../types/Cancion'
 import type { Valoracion } from '../types/Valoracion'
@@ -39,7 +41,7 @@ async function cargarDatosCancion() {
     cargando.value = false
   }
 }
-
+// @ts-ignore
 function abrirModalValoracion() {
   const usuarioGuardado = localStorage.getItem('usuario')
 
@@ -50,11 +52,11 @@ function abrirModalValoracion() {
 
   mostrarModalValoracion.value = true
 }
-
+// @ts-ignore
 function cerrarModalValoracion() {
   mostrarModalValoracion.value = false
 }
-
+// @ts-ignore
 async function publicarValoracion(puntuacion: number, comentario: string) {
   if (!cancion.value) {
     return

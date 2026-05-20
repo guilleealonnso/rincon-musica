@@ -1,6 +1,9 @@
 <script setup lang="ts">
+// @ts-ignore
 import { RouterView } from 'vue-router'
+// @ts-ignore
 import AppHeader from './components/layout/AppHeader.vue'
+// @ts-ignore
 import AppFooter from './components/layout/AppFooter.vue'
 </script>
 

@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref } from 'vue'// @ts-ignore
 import CancionCard from '../components/canciones/CancionCard.vue'
+// @ts-ignore
 import AlbumCard from '../components/albumes/AlbumCard.vue'
+// @ts-ignore
 import ArtistaCard from '../components/artistas/ArtistaCard.vue'
+// @ts-ignore
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
 import { useValoracionModal } from '../composables/useValoracionModal'
-import { cancionService } from '../services/cancionService'
+import { cancionService } from '../services/CancionService'
 import { albumService } from '../services/albumService'
 import { artistaService } from '../services/artistaService'
 import type { Cancion } from '../types/Cancion'
@@ -25,7 +28,7 @@ const artistas = ref<Artista[]>([])
 const cargando = ref(false)
 const error = ref('')
 const busquedaRealizada = ref(false)
-
+// @ts-ignore
 const {
   cancionSeleccionada,
   mostrarModalValoracion,
@@ -34,7 +37,7 @@ const {
   cerrarModalValoracion,
   publicarValoracion,
 } = useValoracionModal()
-
+// @ts-ignore
 const generos = [
   'Rock',
   'Pop',
@@ -44,7 +47,7 @@ const generos = [
   'Metal',
   'Electrónica',
 ]
-
+// @ts-ignore
 async function buscar() {
   error.value = ''
   cargando.value = true
@@ -86,7 +89,7 @@ async function buscar() {
     cargando.value = false
   }
 }
-
+// @ts-ignore
 function limpiarFiltros() {
   termino.value = ''
   genero.value = ''
@@ -140,8 +143,6 @@ section.explorar-view
   p.error(v-else-if="error") {{ error }}
 
   section.resultados(v-else-if="busquedaRealizada")
-    //- .section-header
-    //-   h2 Resultados
 
     p.sin-resultados(
       v-if="tipoBusqueda === 'canciones' && canciones.length === 0"

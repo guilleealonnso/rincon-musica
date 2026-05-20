@@ -3,7 +3,7 @@ import { onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { artistaService } from '../services/artistaService'
 import { albumService } from '../services/albumService'
-import { cancionService } from '../services/cancionService'
+import { cancionService } from '../services/CancionService'
 // @ts-ignore
 import AlbumCard from '../components/albumes/AlbumCard.vue'
 // @ts-ignore
