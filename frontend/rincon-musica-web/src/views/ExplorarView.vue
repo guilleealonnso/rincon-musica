@@ -103,7 +103,7 @@ section.explorar-view
   .view-header
     p.view-label Buscar
     h1 Explorar
-    p.view-description Busca canciones, álbumes o artistas dentro de la plataforma.
+    p.view-description Busca contenido dentro de la plataforma.
 
   .buscador
     .campo
@@ -140,8 +140,8 @@ section.explorar-view
   p.error(v-else-if="error") {{ error }}
 
   section.resultados(v-else-if="busquedaRealizada")
-    .section-header
-      h2 Resultados
+    //- .section-header
+    //-   h2 Resultados
 
     p.sin-resultados(
       v-if="tipoBusqueda === 'canciones' && canciones.length === 0"

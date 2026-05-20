@@ -22,6 +22,7 @@ public class ActualizacionSpotifyService {
 
     @Scheduled(cron = "0 0 3 * * *")
     public void actualizarPopularidadCanciones() {
+
         String accessToken = spotifyService.obtenerAccessToken();
 
         if (accessToken == null) {
@@ -31,7 +32,9 @@ public class ActualizacionSpotifyService {
 
         List<Cancion> canciones = cancionService.obtenerTodas();
 
+        int intentadas = 0;
         int actualizadas = 0;
+        int limite = 10;
 
         for (Cancion cancion : canciones) {
 
@@ -39,32 +42,37 @@ public class ActualizacionSpotifyService {
                 continue;
             }
 
+            if (intentadas >= limite) {
+                break;
+            }
+
+            intentadas++;
+
+
             Integer popularidadSpotify = spotifyService.obtenerPopularidadCancion(
                     cancion.getIdSpotify(),
                     accessToken
             );
 
             if (popularidadSpotify == null) {
+                System.out.println("No se pudo actualizar: " + cancion.getTitulo());
+                pausarPeticion();
                 continue;
             }
 
             if (!popularidadSpotify.equals(cancion.getPopularidad())) {
                 cancion.setPopularidad(popularidadSpotify);
-
-                System.out.println("Popularidad actualizada: "
-                        + cancion.getTitulo()
-                        + " → "
-                        + popularidadSpotify);
+                actualizadas++;
             }
 
             cancion.setUltAct(LocalDateTime.now());
             cancionService.actualizar(cancion);
-            actualizadas++;
 
             pausarPeticion();
         }
 
-        System.out.println("Actualización finalizada. Canciones revisadas: " + actualizadas);
+        System.out.println("Actualización finalizada. Canciones intentadas: "
+                + intentadas + ". Popularidades modificadas: " + actualizadas);
     }
 
     private void pausarPeticion() {

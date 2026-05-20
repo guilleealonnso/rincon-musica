@@ -20,6 +20,7 @@ public class SpotifyController {
 
     @PostMapping("/actualizar-popularidad")
     public String actualizarPopularidad() {
+    	System.out.println("Endpoint llamado");
         actualizacionSpotifyService.actualizarPopularidadCanciones();
         return "Actualización de popularidad ejecutada correctamente.";
     }

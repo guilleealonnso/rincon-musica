@@ -58,13 +58,15 @@ header.app-header
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  background: #181818;
-  border-bottom: 1px solid #2a2a2a;
+  background: #111111;
+  border-bottom: 1px solid #252525;
 }
 
 .logo {
-  font-weight: 700;
+  color: #f5f5f5;
+  font-weight: 800;
   font-size: 22px;
+  letter-spacing: .3px;
 }
 
 .nav {
@@ -76,12 +78,18 @@ header.app-header
 
 .nav a,
 .auth-links a {
-  color: #cfcfcf;
+  color: #b8b8b8;
+  transition: color .2s ease;
+}
+
+.nav a:hover,
+.auth-links a:hover {
+  color: #ffffff;
 }
 
 .nav a.router-link-active {
-  color: #ffffff;
-  font-weight: 700;
+  color: #d6ff3f;
+  font-weight: 800;
 }
 
 .auth-links,
@@ -94,10 +102,16 @@ header.app-header
 
 .registro-link {
   padding: 9px 14px;
-  border: 1px solid #ffffff;
+  border: 1px solid #d6ff3f;
   border-radius: 999px;
-  color: #ffffff !important;
-  font-weight: 700;
+  color: #111111 !important;
+  background: #d6ff3f;
+  font-weight: 800;
+}
+
+.registro-link:hover {
+  background: #ffffff;
+  border-color: #ffffff;
 }
 
 .profile-btn {
@@ -105,28 +119,30 @@ header.app-header
   height: 42px;
   display: grid;
   place-items: center;
-  border: 1px solid #ffffff;
+  border: 1px solid #d6ff3f;
   border-radius: 50%;
-  background: #ffffff;
+  background: #d6ff3f;
   color: #111111;
+  transition: transform .2s ease, background .2s ease;
 }
 
 .profile-btn:hover {
   transform: translateY(-1px);
+  background: #ffffff;
 }
 
 .logout-btn {
   padding: 9px 14px;
-  border: 1px solid #555555;
+  border: 1px solid #3a3a3a;
   border-radius: 999px;
   background: transparent;
-  color: #ffffff;
+  color: #f5f5f5;
   font-weight: 700;
 }
 
 .logout-btn:hover {
-  background: #ffffff;
-  color: #111111;
+  border-color: #d6ff3f;
+  color: #d6ff3f;
 }
 
 @media (max-width: 900px) {

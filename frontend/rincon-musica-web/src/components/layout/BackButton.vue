@@ -1,4 +1,5 @@
 <script setup lang="ts">
+// @ts-ignore
 import { PhArrowLeft } from '@phosphor-icons/vue'
 
 defineProps<{
@@ -35,4 +36,4 @@ RouterLink.back-button(:to="to")
   background: #202020;
   transform: translateX(-2px);
 }
-</style>
+</style>    

@@ -63,13 +63,10 @@ section.perfil-view
           h1 {{ usuario.username }}
           p {{ usuario.email }}
 
-      .datos
-        p
-          strong ID:
-          |  {{ usuario.id }}
+      .datos  
         p
           strong Fecha de registro:
-          |  {{ usuario.fechaRegistro || 'No disponible' }}
+          |  {{ usuario.fechaRegistro }}
 
       .acciones
         button.cerrar-btn(type="button" @click="cerrarSesion") Cerrar sesión

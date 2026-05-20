@@ -4,9 +4,13 @@ import { useRoute } from 'vue-router'
 import { artistaService } from '../services/artistaService'
 import { albumService } from '../services/albumService'
 import { cancionService } from '../services/cancionService'
+// @ts-ignore
 import AlbumCard from '../components/albumes/AlbumCard.vue'
+// @ts-ignore
 import CancionCard from '../components/canciones/CancionCard.vue'
+// @ts-ignore
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
+// @ts-ignore
 import BackButton from '../components/layout/BackButton.vue'
 import { useValoracionModal } from '../composables/useValoracionModal'
 import type { Artista } from '../types/Artista'
@@ -21,7 +25,7 @@ const cancionesArtista = ref<Cancion[]>([])
 
 const cargando = ref(true)
 const error = ref('')
-
+// @ts-ignore
 const {
   cancionSeleccionada,
   mostrarModalValoracion,

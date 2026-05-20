@@ -1,7 +1,7 @@
 
 <template lang="pug">
 footer.app-footer
-  p El Rincón de la Música · Proyecto TFG DAM
+  p El Rincón de la Música · TFG DAM
 </template>
 <script setup lang="ts">
 </script>

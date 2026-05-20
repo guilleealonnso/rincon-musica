@@ -83,7 +83,7 @@ section.canciones-view
   .view-header
     p.view-label Catálogo
     h1 Canciones
-    p.view-description Explora todas las canciones disponibles en la plataforma y accede a su detalle para consultar valoraciones y comentarios.
+    p.view-description Explora todas las canciones disponibles.
 
   p(v-if="cargando") Cargando canciones...
   p.error(v-else-if="error") {{ error }}
