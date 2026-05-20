@@ -6,17 +6,7 @@ Para ejecutar el proyecto es necesario tener instalado:
 - MySQL
 - DBeaver u otro gestor de base de datos
 
-Estructura del proyecto
 
-
-rincon-musica/
-├── backend/
-│   └── rincon-musica-api/
-├── frontend/
-│   └── rincon-musica-web/
-├── ddl-rincon-musica.sql
-├── rincon_musica-data.sql
-└── README.md
 
 Configuración de la base de datos
 
