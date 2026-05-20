@@ -40,12 +40,15 @@ Ejecución del backend
 
 Desde la raíz del proyecto:
 
-cd backend/rincon-musica-api
-mvn spring-boot:run -Dspring-boot.run.profiles=local
+Abrir el proyecto `backend/rincon-musica-api` en Eclipse o Spring Tool Suite.
 
-El backend quedará disponible en:
+Configurar el perfil activo `local` añadiendo en VM arguments:
 
-http://localhost:8080
+
+-Dspring.profiles.active=local
+
+y luego run as: Spring Boot App
+
 
 Para comprobar que funciona:
 
