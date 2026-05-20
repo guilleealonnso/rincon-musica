@@ -5,6 +5,7 @@ import { albumService } from '../services/albumService'
 import { cancionService } from '../services/cancionService'
 import CancionCard from '../components/canciones/CancionCard.vue'
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
+import BackButton from '../components/layout/BackButton.vue'
 import { useValoracionModal } from '../composables/useValoracionModal'
 import type { Album } from '../types/Album'
 import type { Cancion } from '../types/Cancion'
@@ -49,7 +50,7 @@ section.album-detalle-view
   p.error(v-else-if="error") {{ error }}
 
   template(v-else-if="album")
-    RouterLink.volver(to="/albumes") ← Volver a álbumes
+    BackButton(to="/albumes" label="Volver a álbumes")
 
     .detalle
       img.detalle-img(:src="album.imagenUrl" :alt="album.titulo")
@@ -99,11 +100,7 @@ section.album-detalle-view
   padding: 48px 24px;
 }
 
-.volver {
-  display: inline-block;
-  margin-bottom: 28px;
-  color: #cfcfcf;
-}
+
 
 .detalle {
   display: grid;

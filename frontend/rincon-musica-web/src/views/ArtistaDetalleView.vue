@@ -7,6 +7,7 @@ import { cancionService } from '../services/cancionService'
 import AlbumCard from '../components/albumes/AlbumCard.vue'
 import CancionCard from '../components/canciones/CancionCard.vue'
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
+import BackButton from '../components/layout/BackButton.vue'
 import { useValoracionModal } from '../composables/useValoracionModal'
 import type { Artista } from '../types/Artista'
 import type { Album } from '../types/Album'
@@ -55,7 +56,7 @@ section.artista-detalle-view
   p.error(v-else-if="error") {{ error }}
 
   template(v-else-if="artista")
-    RouterLink.volver(to="/artistas") ← Volver a artistas
+    BackButton(to="/artistas" label="Volver a artistas")
 
     .detalle
       img.detalle-img(:src="artista.imagenUrl" :alt="artista.nombre")
@@ -117,11 +118,6 @@ section.artista-detalle-view
   padding: 48px 24px;
 }
 
-.volver {
-  display: inline-block;
-  margin-bottom: 28px;
-  color: #cfcfcf;
-}
 
 .detalle {
   display: grid;

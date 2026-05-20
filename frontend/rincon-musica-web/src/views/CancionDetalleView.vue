@@ -4,6 +4,7 @@ import { useRoute, useRouter } from 'vue-router'
 import { cancionService } from '../services/cancionService'
 import { valoracionService } from '../services/valoracionService'
 import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
+import BackButton from '../components/layout/BackButton.vue'
 import type { Cancion } from '../types/Cancion'
 import type { Valoracion } from '../types/Valoracion'
 import type { Usuario } from '../types/Usuario'
@@ -96,7 +97,7 @@ section.detalle-view
   p.error(v-else-if="error") {{ error }}
 
   template(v-else-if="cancion")
-    RouterLink.volver(to="/canciones") ← Volver a canciones
+    BackButton(to="/canciones" label="Volver a canciones")
 
     .detalle
       img.detalle-img(:src="cancion.imagenUrl" :alt="cancion.titulo")
@@ -155,11 +156,6 @@ section.detalle-view
   padding: 48px 24px;
 }
 
-.volver {
-  display: inline-block;
-  margin-bottom: 28px;
-  color: #cfcfcf;
-}
 
 .detalle {
   display: grid;
