@@ -4,6 +4,10 @@ import type { Cancion } from '../../types/Cancion'
 defineProps<{
   cancion: Cancion
 }>()
+
+const emit = defineEmits<{
+  valorar: [cancion: Cancion]
+}>()
 </script>
 
 <template lang="pug">
@@ -17,7 +21,10 @@ article.cancion-card
       p.detalle {{ cancion.genero }} · {{ cancion.anyo }}
       p.popularidad Popularidad: {{ cancion.popularidad }}
 
-  button.valorar-btn(type="button") Valorar
+  button.valorar-btn(
+    type="button"
+    @click.stop="emit('valorar', cancion)"
+  ) Valorar
 </template>
 
 <style scoped>

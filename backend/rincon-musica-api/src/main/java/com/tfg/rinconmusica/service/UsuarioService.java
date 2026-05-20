@@ -1,5 +1,7 @@
 package com.tfg.rinconmusica.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.stereotype.Service;
 
 import com.tfg.rinconmusica.dao.UsuarioDAO;
@@ -29,6 +31,8 @@ public class UsuarioService {
         if (usuarioUsername != null) {
             throw new RuntimeException("Ya existe un usuario con ese nombre de usuario");
         }
+
+        usuario.setFechaRegistro(LocalDateTime.now());
 
         return usuarioDAO.guardar(usuario);
     }

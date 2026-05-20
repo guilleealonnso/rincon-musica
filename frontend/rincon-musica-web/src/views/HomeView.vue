@@ -1,13 +1,40 @@
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 import { RouterLink } from 'vue-router'
 import CancionCard from '../components/canciones/CancionCard.vue'
+import ValoracionModal from '../components/valoraciones/ValoracionModal.vue'
+import { useValoracionModal } from '../composables/useValoracionModal'
 import { cancionService } from '../services/cancionService'
 import type { Cancion } from '../types/Cancion'
 
 const cancionesPopulares = ref<Cancion[]>([])
 const cargando = ref(true)
 const error = ref('')
+
+const {
+  cancionSeleccionada,
+  mostrarModalValoracion,
+  publicandoValoracion,
+  abrirModalValoracion,
+  cerrarModalValoracion,
+  publicarValoracion,
+} = useValoracionModal()
+
+const textoActualizacionPopulares = computed(() => {
+  const fechas = cancionesPopulares.value
+    .map((cancion) => cancion.ultAct)
+    .filter((fecha): fecha is string => Boolean(fecha))
+
+  if (fechas.length === 0) {
+    return 'Actualización no disponible'
+  }
+
+  const ultimaFecha = fechas.sort(
+    (a, b) => new Date(b).getTime() - new Date(a).getTime()
+  )[0]
+
+  return obtenerTextoActualizacion(ultimaFecha)
+})
 
 onMounted(async () => {
   try {
@@ -18,6 +45,38 @@ onMounted(async () => {
     cargando.value = false
   }
 })
+
+function obtenerTextoActualizacion(fecha: string | null): string {
+  if (!fecha) {
+    return 'Actualización no disponible'
+  }
+
+  const fechaActualizacion = new Date(fecha)
+  const ahora = new Date()
+
+  const diferenciaMs = ahora.getTime() - fechaActualizacion.getTime()
+  const diferenciaMinutos = Math.floor(diferenciaMs / 1000 / 60)
+  const diferenciaHoras = Math.floor(diferenciaMinutos / 60)
+  const diferenciaDias = Math.floor(diferenciaHoras / 24)
+
+  if (diferenciaMinutos < 1) {
+    return 'Actualizado hace unos segundos'
+  }
+
+  if (diferenciaMinutos < 60) {
+    return `Actualizado hace ${diferenciaMinutos} min`
+  }
+
+  if (diferenciaHoras < 24) {
+    return `Actualizado hace ${diferenciaHoras} h`
+  }
+
+  if (diferenciaDias === 1) {
+    return 'Actualizado ayer'
+  }
+
+  return `Actualizado hace ${diferenciaDias} días`
+}
 </script>
 
 <template lang="pug">
@@ -37,7 +96,10 @@ section.home
       div
         p.section-label Descubre
         h2 Canciones populares
-      RouterLink.section-link(to="/canciones") Ver todas
+
+      .section-actions
+        span.actualizacion {{ textoActualizacionPopulares }}
+        RouterLink.section-link(to="/canciones") Ver todas
 
     p(v-if="cargando") Cargando canciones...
     p.error(v-else-if="error") {{ error }}
@@ -47,7 +109,16 @@ section.home
         v-for="cancion in cancionesPopulares"
         :key="cancion.id"
         :cancion="cancion"
+        @valorar="abrirModalValoracion"
       )
+
+  ValoracionModal(
+    v-if="mostrarModalValoracion && cancionSeleccionada"
+    :titulo-cancion="cancionSeleccionada.titulo"
+    :cargando="publicandoValoracion"
+    @cerrar="cerrarModalValoracion"
+    @publicar="publicarValoracion"
+  )
 </template>
 
 <style scoped>
@@ -128,6 +199,7 @@ section.home
   display: flex;
   align-items: end;
   justify-content: space-between;
+  gap: 24px;
   margin-bottom: 24px;
 }
 
@@ -136,8 +208,21 @@ section.home
   font-size: 32px;
 }
 
+.section-actions {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.actualizacion {
+  color: #9b9b9b;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
 .section-link {
   color: #cfcfcf;
+  white-space: nowrap;
 }
 
 .cards-grid {
@@ -148,5 +233,26 @@ section.home
 
 .error {
   color: #ff8a8a;
+}
+
+@media (max-width: 700px) {
+  .hero {
+    padding: 36px 28px;
+  }
+
+  .hero h1 {
+    font-size: 40px;
+  }
+
+  .section-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .section-actions {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
 }
 </style>

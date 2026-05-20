@@ -1,5 +1,6 @@
 package com.tfg.rinconmusica.service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.scheduling.annotation.Scheduled;
@@ -49,8 +50,6 @@ public class ActualizacionSpotifyService {
 
             if (!popularidadSpotify.equals(cancion.getPopularidad())) {
                 cancion.setPopularidad(popularidadSpotify);
-                cancionService.actualizar(cancion);
-                actualizadas++;
 
                 System.out.println("Popularidad actualizada: "
                         + cancion.getTitulo()
@@ -58,10 +57,14 @@ public class ActualizacionSpotifyService {
                         + popularidadSpotify);
             }
 
+            cancion.setUltAct(LocalDateTime.now());
+            cancionService.actualizar(cancion);
+            actualizadas++;
+
             pausarPeticion();
         }
 
-        System.out.println("Actualización finalizada. Canciones actualizadas: " + actualizadas);
+        System.out.println("Actualización finalizada. Canciones revisadas: " + actualizadas);
     }
 
     private void pausarPeticion() {
