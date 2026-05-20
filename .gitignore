@@ -3,6 +3,7 @@
 
 
 # Backend
+backend/.metadata/
 backend/rincon-musica-api/target/
 backend/rincon-musica-api/.classpath
 backend/rincon-musica-api/.project
