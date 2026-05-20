@@ -75,6 +75,9 @@ Ejecutar el frontend.
 Abrir http://localhost:5173 en el navegador.
 Archivos no incluidos
 
+nota: En el frontend hay algun comentario @ts-ignore para que no salga el error, es un error sin importancia de pug, sin ese comentario funciona igual
+
+
 No se incluyen las siguientes carpetas o archivos porque son generados automáticamente o contienen configuración local:
 
 backend/rincon-musica-api/target/
